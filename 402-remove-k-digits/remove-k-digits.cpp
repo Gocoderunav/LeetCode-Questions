@@ -1,6 +1,3 @@
-#include <stack>
-#include <string>
-
 class Solution {
 public:
     string removeKdigits(string nums, int k) {
