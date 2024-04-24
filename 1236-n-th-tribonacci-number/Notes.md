@@ -1,0 +1,1 @@
+<h2>n-th-tribonacci-number Notes</h2><hr>[ Time taken: 4 天 7 hrs 11 m 13 s ]
