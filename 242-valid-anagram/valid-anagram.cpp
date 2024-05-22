@@ -1,22 +1,13 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        int n1 = s.size();
-        int n2 = t.size();
-        unordered_map<char,int> mp1;
-        unordered_map<char,int> mp2;
-        
-        if(n1 !=n2) return false;
-        int n =n1;
-        for(int i=0;i<n1;i++){
-            mp1[s[i]]++;
-            mp2[t[i]]++;
-        }
-        for(int i=0;i<n;i++){
-           if(mp1[s[i]]!=mp2[s[i]]){
-              return false;
-           }
-        }
-        return true;
+       vector<int> hashmap1 (26,0);
+       vector<int> hashmap2 (26,0);
+       if( s.size()!= t.size()) return false;
+       for(int i = 0 ; i < s.size();i++){
+         hashmap1[s[i]-'a']++;
+         hashmap2[t[i]-'a']++;
+       }
+        return (hashmap1 == hashmap2);
     }
 };
