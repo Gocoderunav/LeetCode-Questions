@@ -1,28 +1,34 @@
+#include <vector>
+#include <string>
+
+using namespace std;
+
 class Solution {
 private:
-    string commonPrefix(string s1, string s2) {
-        int i = 0;
-        int n1 = s1.size();
-        int n2 = s2.size();
-        string res = "";
-        while (i < n1 && i < n2) {
-            if (s1[i] != s2[i]) {
+    string helper(string s, string t) {
+        int i = 0, j = 0;
+        string str = "";
+        while (i < s.size() && j < t.size()) {
+            if (s[i] == t[j]) {
+                str.push_back(s[i]);
+                i++;
+                j++;
+            } else {
                 break;
             }
-            res += s1[i];
-            i++;
         }
-        return res;
+        return str;
     }
-
+  
 public:
     string longestCommonPrefix(vector<string>& strs) {
-        int n = strs.size();
-        if (n == 0) return "";
-        string prefix = strs[0]; 
-        for (int i = 1; i < n; i++) {
-            prefix = commonPrefix(prefix, strs[i]); 
+        if (strs.empty()) return "";
+        
+        string str = strs[0];
+        for (int i = 1; i < strs.size(); i++) {
+            str = helper(str, strs[i]);
+            if (str.empty()) break;  
         }
-        return prefix;
+        return str;
     }
 };
