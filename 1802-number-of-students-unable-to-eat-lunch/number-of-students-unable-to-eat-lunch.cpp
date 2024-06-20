@@ -1,33 +1,19 @@
-#include <vector>
-
-using namespace std;
-
 class Solution {
 public:
     int countStudents(vector<int>& students, vector<int>& sandwiches) {
-        int hashmap[2] = {0}; 
-
-        
-        for (int i = 0; i < students.size(); i++) {
-            hashmap[students[i]]++; 
+        vector<int> hashset(2,0);
+        for(int i=0;i<students.size();i++){
+            hashset[students[i]]++;
         }
 
-        
-        for (int i = 0; i < sandwiches.size(); i++) {
-            if (hashmap[sandwiches[i]] > 0) {
-                hashmap[sandwiches[i]]--; 
-            } else {
-                
+        for(int j=0;j<sandwiches.size();j++){
+            if(hashset[sandwiches[j]]>0 ){
+                hashset[sandwiches[j]]--;
+            }else{
                 break;
             }
         }
-
-        
-        if (hashmap[0] > 0)
-            return hashmap[0];
-        else if (hashmap[1] > 0)
-            return hashmap[1];
-        else
-            return 0; 
+        if(hashset[0]>0 ) return hashset[0];
+        return hashset[1];
     }
 };
