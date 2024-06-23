@@ -3,23 +3,23 @@ class Solution {
         if (root == nullptr) {
             return;
         }
-        // Traverse the left subtree
+        
         helper(root->left, res, prev);
         
-        // Process the current node
-        if (prev != -1) {  // Check if prev is set
-            res = min(res, abs(root->val - prev));
-        }
-        prev = root->val;  // Update prev to current node's value
         
-        // Traverse the right subtree
+        if (prev != -1) {  
+            res = min(res, abs((root->val) - prev));
+        }
+        prev = root->val;  
+        
+        
         helper(root->right, res, prev);
     }
 
 public:
     int minDiffInBST(TreeNode* root) {
-        int res = INT_MAX;  // Initialize result with a large value
-        int prev = -1;  // Initialize previous node's value with -1 (indicating unset)
+        int res = INT_MAX;  
+        int prev = -1;  
         helper(root, res, prev);
         return res;
     }
