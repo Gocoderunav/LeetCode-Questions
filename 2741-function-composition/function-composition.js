@@ -3,14 +3,10 @@
  * @return {Function}
  */
 var compose = function(functions) {
-    
+    const fn = (acc,f) => f(acc);// function role defined here
     return function(x) {
-        for (const n of functions.reverse()){
-            x = n(x);
+        return functions.reduceRight(fn,x);
         }
-        return x;
-    }
-
 };
 
 /**
