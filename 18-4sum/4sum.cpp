@@ -26,10 +26,9 @@ public:
                 long long sum = static_cast<long long>(nums[low]) + nums[high] + val1 + val;
                 if((sum)==target){
                  res.push_back({val, nums[low], nums[high],val1});
-                
-                 while(low < high &&  nums[low] ==nums[low+1]) low++;
+
                  while(low < high &&  nums[high] ==nums[high-1]) high--;
-                 
+                 while(low < high &&  nums[low] ==nums[low+1]) low++;
                  low++;
                  high--;
                 }else if((sum) > target){
