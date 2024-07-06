@@ -1,26 +1,32 @@
 class Solution {
 public:
     int trap(vector<int>& height) {
-        int i = 0;
-        int j = height.size() - 1;
-        int maxLeft = 0;  // Initialize maxLeft to 0
-        int maxRight = 0; // Initialize maxRight to 0
-        int result = 0;
+        int n = height.size();
+        vector<int>vec1;
+        vector<int>vec2;
 
-        while (i < j) {
-            if (height[i] <= height[j]) {
-                // Update maxLeft and calculate trapped water on the left side
-                maxLeft = max(maxLeft, height[i]);
-                result += maxLeft - height[i];
-                i++;
-            } else {
-                // Update maxRight and calculate trapped water on the right side
-                maxRight = max(maxRight, height[j]);
-                result += maxRight - height[j];
-                j--;
+        int maxLeft=height[0];
+        for(int i=0;i<n;i++){
+            if( height[i]>maxLeft){
+                 maxLeft =height[i];
             }
+                vec1.push_back(maxLeft);
         }
-
-        return result;
+        
+        int maxRight =height[n-1];
+         for(int j=n-1;j>=0;j--){
+            if( height[j] > maxRight){
+                maxRight =height[j];
+            }
+                vec2.push_back(maxRight);
+            
+        }
+        reverse(vec2.begin(), vec2.end());
+        int sum=0;
+        for(int k=0;k<n;k++){
+            int mini = min(vec1[k],vec2[k]);
+            sum+= mini-height[k];
+        }
+        return sum;
     }
 };
